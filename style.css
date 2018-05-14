@@ -1,0 +1,17 @@
+#app{
+    background-color:black;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#app div{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #bada55;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .4s;
+}
