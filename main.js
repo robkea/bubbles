@@ -1,11 +1,12 @@
-`use strict`;
+"use strict";
+const divs = document.querySelectorAll("#app div");
 
-const divs = document.querySelectorAll(`#app div`);
+divs.forEach(function(div){
 
-divs.forEach(function(){
-    //div.style.transform = `translate(50vw, 50vh)`;
-    div.addEventlistener(`click`, function(){
-        div.style.transform = `translate(${Math.random()*100}vw, ${Math.random()*100}vh`);
-        div.style.backgroundColor = `hsl(${Math.random()*360}, ${Math.random()*100}, 50%)`;
+    // div.style.transform =`translate(50vw, 50vh)`;
+    div.addEventListener("mouseenter", function(){
+        div.style.transform =`translate(${Math.random()*100}vw, ${Math.random()*100}vh)`;
+        div.style.backgroundColor = `hsl(${Math.random()*360},${Math.random()*100}%  ,50%)`;
+        //#FF1234, rgb(0, 123, 345), hsl(hue360, saturation12%, lightness12%)
     })
 })
