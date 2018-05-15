@@ -1,4 +1,15 @@
-"use strict";
+`use strict`;
+
+const app = document.createElement(`div`);
+app.setAttribute(`id`, `app`);
+
+for(let i=0; i<300; i++){
+    const mydiv = document.createElement(`div`);
+    app.appendChild(mydiv);
+}
+
+document.body.appendChild(app);
+
 const divs = document.querySelectorAll("#app div");
 
 divs.forEach(function(div){
