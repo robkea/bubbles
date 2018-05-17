@@ -1,23 +1,43 @@
-`use strict`;
+"use strict";
 
-const app = document.createElement(`div`);
-app.setAttribute(`id`, `app`);
+// create divs
+const app = document.querySelector("#app");
 
-for(let i=0; i<300; i++){
-    const mydiv = document.createElement(`div`);
-    app.appendChild(mydiv);
+const numberOfBubbles = 10;
+
+for( let i=0; i < numberOfBubbles; i++ ) {
+    const div = document.createElement("div");
+    app.appendChild(div);
 }
 
-document.body.appendChild(app);
+app.addEventListener("mouseout", clicked);
 
-const divs = document.querySelectorAll("#app div");
 
-divs.forEach(function(div){
+function clicked( event ) {
+    console.log(event);
+    const target = event.target;
 
-    // div.style.transform =`translate(50vw, 50vh)`;
-    div.addEventListener("mouseenter", function(){
-        div.style.transform =`translate(${Math.random()*100}vw, ${Math.random()*100}vh)`;
-        div.style.backgroundColor = `hsl(${Math.random()*360},${Math.random()*100}%  ,50%)`;
-        //#FF1234, rgb(0, 123, 345), hsl(hue360, saturation12%, lightness12%)
-    })
-})
+    if( target.id === "app" ) {
+        // We leave the parent ...
+
+        const ourDiv = event.relatedTarget;
+        if( ourDiv != null && ourDiv.parentElement != null && ourDiv.parentElement.id === "app") {
+            randomMove(ourDiv);
+        }
+    }
+}
+
+function randomMove(ourDiv) {
+    ourDiv.style.transform= `translate(${Math.random()*100}vw, ${Math.random()*100}vh)`;
+    ourDiv.style.backgroundColor = `hsl(${Math.random()*360}, ${Math.random()*100}%, 50%)`;
+
+}
+
+function createNewBubble() {
+    const div = document.createElement("div");
+    app.appendChild(div);
+    randomMove(div);
+
+}
+
+setInterval( createNewBubble, 1000);
